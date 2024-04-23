@@ -357,7 +357,7 @@ function displayLoader(isLoading) {
 }
 function updateChatUI(msg) {
     const messagesContainer = document.getElementById("chat-messages");
-    const messageElement = document.createElement("pre");
+    const messageElement = document.createElement("div");
     messageElement.classList.add("chat-message");
     if (msg.sender === 'user') {
         messageElement.classList.add("user-message");
