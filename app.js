@@ -7,7 +7,7 @@ let advisorTitle = '';
 let websocketUrl = '';
 let advisorConversationStarters = []
 let advisorWelcomeMessage = '';
-let advisorLogo = `<svg width="25" height="32" viewBox="0 0 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+let advisorLogo = `<svg width="42" height="43" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_268_1751)">
 <path d="M22.9602 24.71C23.9432 24.71 24.7402 23.9131 24.7402 22.93C24.7402 21.947 23.9432 21.15 22.9602 21.15C21.9771 21.15 21.1802 21.947 21.1802 22.93C21.1802 23.9131 21.9771 24.71 22.9602 24.71Z" fill="#D4007E"/>
 <path d="M14.4898 31.37C13.7898 30.67 13.7898 29.53 14.4898 28.83L17.8598 25.47C18.5598 24.77 19.6998 24.77 20.3998 25.47C21.0998 26.17 21.0998 27.31 20.3998 28.01L17.0298 31.37C16.3298 32.07 15.1898 32.07 14.4898 31.37Z" fill="#D4007E"/>
@@ -166,6 +166,7 @@ function injectCSS() {
             border-top: 1px solid #e5e7eb;
             padding: 1rem;
             justify-content: space-between;
+            background-color: white;
         }
         .chat-input-container > input {
             border: 1px solid #e5e7eb;
@@ -183,6 +184,7 @@ function injectCSS() {
             border-radius: 9999px;
             display: flex;
             align-items: center;
+            padding: 10px;
         }
         .chat-message {
             padding: 0.75rem;
@@ -221,6 +223,7 @@ function injectCSS() {
     flex-direction: column;
     overflow-y: auto;
     padding-bottom: 1rem;
+    overflow-x: hidden;
 }
 .chat-messages:last-child {
     margin-bottom: 10px;
@@ -235,7 +238,7 @@ function injectCSS() {
 }
 .chat-btn-title {
     color: rgb(212 0 127);
-    border: 1px solid rgb(212 0 127);
+    border: 3px solid rgb(212 0 127);
     border-radius: 50px;
     padding: 10px;
     width: max-content;
@@ -259,15 +262,16 @@ function injectCSS() {
     border-radius: 9999px;
     display: flex;
     align-items: center;
+    padding: 10px
 
 }
 .minmize-chat {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 .right-hr, .left-hr {
     width: 33.5%;
     position: absolute;
-    top: 0;
+    top: 1rem;
     border-color: #e5e7eb;
     
 }
@@ -311,12 +315,13 @@ hr {
   .welcome-message-single {
     padding: 0.5rem 0.75rem;
     background-color: hsl(240 6% 90% / 1);
-    min-width: 300px;
+    width: 90%;
     border-radius: 12px;
     color: #11181C;
     min-height: 50px;
     font-size: 1rem;
     line-height: 1.55rem;
+    margin: auto;
 }
 .welcome-message-container {
     display: flex;
@@ -414,6 +419,25 @@ hr {
     100%{
     transform: translateY(0px);
     }
+  }
+  .chat-button:hover .chat-btn-title {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+  }
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    
+    30%, 50%, 70% {
+      transform: translate3d(-2px, 0, 0);
+    }
+    40%, 60% {
+      transform: translate3d(2px, 0, 0);
   }
 `;
 
@@ -569,7 +593,7 @@ function createChatUIHeader() {
             <p class="chat-header-subtext"><span class="active-now"></span>Active now</p>
         </div>
         <div class="flex">
-            <button id="minmize-chat" class="close-chat minmize-chat" onclick="closeChat()" title="Minimize Chat">-</button>
+            <button id="minmize-chat" class="close-chat minimize-chat" onclick="closeChat()" title="Minimize Chat">-</button>
             <button id="close-chat" class="close-chat" onclick="closeChat()" title="Close Chat">X</button>
         </div>
 
